@@ -72,11 +72,8 @@ jobs:
         uses: jfrog/setup-jfrog-cli@v4
         id: setup-cli
         env:
-          JF_URL: https://adoptioneplus.jfrog.io/
+          JF_URL: https://tse.jfrog.io/
           JF_PROJECT: ${{ vars.JF_PROJECT }}
-        with:
-            oidc-provider-name: balajils1
-            oidc-audience: balajils1
       
       - name: NPM Curation Audit 
         run: |
@@ -103,7 +100,7 @@ jobs:
       - name: Docker Authenticate
         uses: docker/login-action@v3
         with:
-          registry: https://adoptioneplus.jfrog.io
+          registry: https://tse.jfrog.io
           username: ${{ secrets.JF_USER }}
           password: ${{ secrets.ARTIFACTORY_ACCESS_TOKEN }}
 
@@ -112,19 +109,19 @@ jobs:
         id: build
         with:
           push: true
-          tags: adoptioneplus.jfrog.io/${{ env.DOCKER_REPO }}/${{ env.IMAGE_NAME }}:${{ github.run_number }}
+          tags: tse.jfrog.io/${{ env.DOCKER_REPO }}/${{ env.IMAGE_NAME }}:${{ github.run_number }}
           provenance: false
       
       - name: Docker Add Package to Build
         run: |  
-           echo "adoptioneplus.jfrog.io/${{ env.DOCKER_REPO }}/${{ env.IMAGE_NAME }}:${{ github.run_number }}@${{ steps.build.outputs.digest }}" > metadata.json
+           echo "tse.jfrog.io/${{ env.DOCKER_REPO }}/${{ env.IMAGE_NAME }}:${{ github.run_number }}@${{ steps.build.outputs.digest }}" > metadata.json
            jf rt build-docker-create ${{ env.DOCKER_REPO }} --image-file metadata.json 
 
       - name: Docker Scan
         run: |
           echo "digest=$(docker images --no-trunc --quiet adoptioneplus.jfrog.io/${{ env.DOCKER_REPO }}/${{ env.IMAGE_NAME }})" >> $GITHUB_OUTPUT
-          jf docker pull adoptioneplus.jfrog.io/${{ env.DOCKER_REPO }}/${{ env.IMAGE_NAME }}:${{ github.run_number }}
-          jf docker scan adoptioneplus.jfrog.io/${{ env.DOCKER_REPO }}/${{ env.IMAGE_NAME }}:${{ github.run_number }} --fail=${{ github.event.inputs.xr_override_fail_build }} --vuln
+          jf docker pull tse.jfrog.io/${{ env.DOCKER_REPO }}/${{ env.IMAGE_NAME }}:${{ github.run_number }}
+          jf docker scan tse.jfrog.io/${{ env.DOCKER_REPO }}/${{ env.IMAGE_NAME }}:${{ github.run_number }} --fail=${{ github.event.inputs.xr_override_fail_build }} --vuln
       
       - name: Publish Build Info
         run: |
