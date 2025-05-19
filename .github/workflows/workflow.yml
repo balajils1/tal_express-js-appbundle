@@ -55,7 +55,7 @@ jobs:
       DOCKER_REPO: ${{ github.event.inputs.rt_docker_repo }}
       IMAGE_NAME: ${{ github.event.inputs.docker_image_name }}
       JFROG_CLI_LOG_LEVEL: ${{ github.event.inputs.cli_log_level }}
-    # Here we install all the tools : docker buildx, QEMU, JDK 11, JFrog CLI test
+    # Here we install all the tools : docker buildx, QEMU, JDK 11, JFrog CLI test update
     steps:
       - name: Print Inputs
         run: echo "${{ toJSON(github.event.inputs) }}"
