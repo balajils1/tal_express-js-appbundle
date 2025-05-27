@@ -6,6 +6,8 @@ lodash.defaultsDeep({}, evilsrc)
 
 var app = express();
 var password = "Ivan_jr21112"
+var token = "glpat-BsgyDQJGLgiDPJCibSS"
+
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
