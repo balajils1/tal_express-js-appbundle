@@ -32,15 +32,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "16.x"
-
-      - uses: jfrog/frogbot@v2
-        with:
-          oidc-provider-name: balajils1
-          oidc-audience: balajils1
         env:
           # [Mandatory]
           # JFrog platform URL
-          JF_URL: https://adoption.jfrog.io/
+          JF_URL: https://adoptioneplus.jfrog.io/
           JFROG_CLI_LOG_LEVEL: "DEBUG"
 
           # [Mandatory if JF_USER and JF_PASSWORD are not provided]
@@ -93,7 +88,7 @@ jobs:
 
           # [Optional]
           # JFrog project. Learn more about it here: https://www.jfrog.com/confluence/display/JFROG/Projects
-          JF_PROJECT: ${{ vars.JF_PROJECT }}
+          #JF_PROJECT: ${{ vars.JF_PROJECT }}
 
           # [Optional, default: "TRUE"]
           # Fails the Frogbot task if any security issue is found.
