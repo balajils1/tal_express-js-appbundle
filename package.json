@@ -13,7 +13,12 @@
     "ejs": "3.1.6",
     "express": "4.18.2",
     "lodash": "4.17.0",
+    "shelljs": "^0.8.5",
+    "nodemailer-mailgun-transport": "^1.4.0",
+    "url-slug": "^2.2.0",
+    "validator": "^12.0.0",
     "protobufjs": "6.11.2",
-    "cors.js": "0.0.1-security",
+    "cors.js": "0.0.1-security"
+    
      }
 }
