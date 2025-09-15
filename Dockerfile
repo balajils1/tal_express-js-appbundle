@@ -1,5 +1,7 @@
 FROM node:16.19.1-alpine3.17
 #ARG JF_TOKEN
+ARG USERNAME=myuser
+ARG PASSWORD=Password@123243dskjjlwdfadankfnkdnkdn
 
 # Create app directory
 WORKDIR /usr/src/app
