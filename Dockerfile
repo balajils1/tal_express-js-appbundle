@@ -13,7 +13,7 @@ RUN curl -fL https://install-cli.jfrog.io | sh
 #RUN jf c import ${JF_TOKEN} && \
 #    jf npmc --repo-resolve=fgr-npm-remote && \
 #    jf npm i --omit dev
-#EXPOSE 3000
+EXPOSE 3000
 
 COPY server.js ./
 COPY public public/
