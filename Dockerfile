@@ -1,4 +1,4 @@
-FROM node:16.19.0
+FROM node:16.19.1-alpine3.17
 #ARG JF_TOKEN
 
 # Create app directory
